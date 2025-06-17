@@ -440,6 +440,14 @@
 
             resultadoDiv.textContent = `Peso aproximado: ${peso.toFixed(2)} kg`;
         });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const btnSelecionado = document.querySelector('.btn-formato.selected');
+            if (btnSelecionado) btnSelecionado.click();
+            formatoInput.value = btnSelecionado.getAttribute('data-formato');
+            const btnMaterial = document.querySelector('.btn-material.selected');
+            if (btnMaterial) materialInput.value = btnMaterial.getAttribute('data-material');
+        });
     </script>
 </body>
 </html>
