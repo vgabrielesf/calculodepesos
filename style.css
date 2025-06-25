@@ -1,0 +1,505 @@
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a2331;
+            color: #b5b5c3;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        h1.titulo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 48px;
+            margin-bottom: 8px;
+        }
+        p.subtitulo {
+            text-align: center;
+            color: #b5b5c3;
+            font-size: 1.15rem;
+            margin-bottom: 36px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+ 
+            font-size: 1em;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0072c6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f7ff;
+            border-radius: 4px;
+            color: #0072c6;
+            font-weight: bold;
+            text-align: center;
+        }
+        .selecao-materiais {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        .btn-material {
+            padding: 12px 28px;
+            border: 2px solid #0072c6;
+            background: #fff;
+            color: #0072c6;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-size: 1em;
+            min-width: 120px;
+            margin: 0;
+            white-space: nowrap;
+            
+        }
+        .btn-material.selected {
+            background: #0072c6;
+            color: #fff;
+        }
+        .btn-material:hover {
+            background: #e6f7ff;
+        }
+
+        .selecao-formatos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 30px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        .btn-formato {
+            padding: 18px 28px 10px 28px;
+            border: 2px solid #23232a;
+            background: #23232a;
+            color: #b5b5c3;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            font-size: 1em;
+            min-width: 120px;
+            margin: 0;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn-formato.selected,
+        .btn-formato:focus {
+            background: #fff;
+            color: #18181b;
+            border: 2px solid #fff;
+        }
+        .btn-formato img {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 8px;
+            filter: brightness(0.9) invert(0.8);
+        }
+        .btn-formato.selected img,
+        .btn-formato:focus img {
+            filter: none;
+        }
+        .btn-formato span {
+            margin-top: 2px;
+        }
+            .formatos-lista {
+            display: flex;
+            flex-wrap: nowrap;           /* permite quebrar para a linha de baixo */
+            gap: 16px;                 /* diminui o espaço entre os cards */
+            justify-content: center;
+            align-items: flex-end;
+            margin: 32px 0 40px 0;
+            overflow-x: unset;         /* remove rolagem horizontal */
+        }
+        
+
+        .formato-btn {
+            width: 180px;
+            height: 110px;
+            background: #1a2331;
+            border: 2px solid #546071;
+            border-radius: 16px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centraliza tudo verticalmente */
+            cursor: pointer;
+            transition: border 0.2s, background 0.2s, color 0.2s;
+            color: #e0e0e0;
+            font-size: 13px;
+            font-weight: 600;
+            outline: none;
+            margin: 0;
+            box-shadow: none;
+            gap: 0;
+            overflow: hidden;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 8px 8px;
+        }
+        .formato-icone {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px auto;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+        .formato-btn span:last-child {
+            font-size: 1.08em;
+            width: 100%;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            display: block;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+
+
+        .formato-btn.selected,
+        .formato-btn:focus {
+            border: 2px solid #fff;
+            background: #fff;
+            color: #18181b;
+        }
+
+        .formato-btn.selected .formato-icone,
+        .formato-btn:focus .formato-icone {
+            background: #18181b;
+        }
+        .formato-circulo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+        .formato-quadrado {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+        }
+        .formato-hex {
+            width: 38px;
+            height: 38px;
+            background: none;
+            position: relative;
+        }
+        .formato-hex::before {
+            content: "";
+            display: block;
+            width: 38px;
+            height: 38px;
+            background: #b5b5c3;
+            clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+        }
+        .formato-btn.selected .formato-hex::before,
+        .formato-btn:focus .formato-hex::before {
+            background: #18181b;
+        }
+        .formato-chata {
+            width: 50px;           /* igual ao tubo retangular */
+            height: 14px;          /* mais baixo para parecer uma barra chata */
+            border-radius: 2px;
+            background: #ffffff;      /* preenchido */
+            border: 3px solid #ffffff;
+            box-sizing: border-box;
+            display: block;
+            margin: 4px auto 0 auto; /* centraliza e alinha com os outros ícones */
+        }
+        .formato-btn.selected .formato-chata,
+        .formato-btn:focus .formato-chata {
+            background: #18181b;
+            border-color: #18181b;
+        }
+        .formato-tubo-circulo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;      /* cor padrão da borda */
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-circulo,
+        .formato-btn:focus .formato-tubo-circulo {
+            border-color: #18181b;           /* cor da borda quando selecionado */
+            background: transparent;         /* mantém o fundo transparente */
+        }
+        
+        .formato-tubo-quadrado {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            border: 3px solid #ffffff;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-quadrado,
+        .formato-btn:focus .formato-tubo-quadrado {
+            border-color: #18181b;
+            background: transparent;
+        }
+        
+        .formato-tubo-retangular {
+            width: 50px;
+            height: 38px;
+            border-radius: 8px;
+            border: 3px solid #ffffff;
+            background: transparent;
+            box-sizing: border-box;
+            display: block;
+            margin: -4px auto 0 auto;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-retangular,
+        .formato-btn:focus .formato-tubo-retangular {
+            border-color: #18181b;
+            background: transparent;
+        }
+        @media (max-width: 600px) {
+            .selecao-materiais {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-material {
+                width: 100%;
+            }
+        }
+        
+        .formato-barra-retangular {
+            width: 50px;           /* Mais largo que o quadrado */
+            height: 38px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 3px solid #ffffff;
+            box-sizing: border-box;
+            display: block;
+            margin: -4px auto 0 auto;
+        }
+        .formato-btn.selected .formato-barra-retangular,
+        .formato-btn:focus .formato-barra-retangular {
+            background: #18181b;
+            border-color: #18181b;
+        }
+
+        .icone-chapa {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-chapa,
+        .formato-btn:focus .icone-chapa {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-chapa {
+            background: transparent !important;
+        }
+
+        .formulario-peso {
+            background: rgba(84, 96, 113, 0.85); /* cor com transparência */
+            border-radius: 16px;
+            border: 1px solid #809eaf;
+            margin: 0;
+            padding: 24px 32px 16px 32px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .formulario-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .formulario-titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .formulario-nome {
+            color: #fff;
+        }
+        .formulario-quantidade {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .formulario-quantidade label {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+        .formulario-quantidade input {
+            width: 60px;
+            background: #18181b;
+            color: #fff;
+            border: 1px solid #001fd1;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 1.1em;
+            outline: none;
+            text-align: right;
+        }
+        .linha-campos {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        .campo {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0;
+            min-width: 120px;
+        }
+        .campo label {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .campo .input-sufixo input[type="number"],
+        .campo .input-sufixo input[type="text"] {
+            width: 50%;
+            min-width: 120px;
+            box-sizing: border-box;
+            color: #fff;
+            height: 40px;
+            background: #435164;
+        }
+        #peso {
+            width: 50%;
+            min-width: 120px;
+            box-sizing: border-box;
+            color: #ff7b00;
+            height: 40px;
+            background: #1b2533;
+ 
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 1.1em;
+            outline: none;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        label[for="peso"] {
+            color: #ffffff;
+        }
+
+        .formulario-material label {
+            color: #fff;
+            font-size: 17px;
+            margin-bottom: 25px;
+            margin-right: 4px;
+        }
+        .formulario-material select {
+            background: #1b2533;
+            color: #fff;
+
+            padding: 8px 10px;
+            font-size: 1.1em;
+            outline: none;
+        }
+        .formato-label {
+            display: block;
+            min-height: 2.2em;      /* Ajuste conforme o tamanho da fonte */
+            line-height: 1.1em;
+            text-align: center;
+            /* Garante alinhamento ao topo */
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            white-space: normal;
+        }
+        .icone-perfil-u {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-perfil-u,
+        .formato-btn:focus .icone-perfil-u {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-u {
+            background: transparent !important;
+        }
+        .icone-perfil-t, .icone-perfil-l {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-perfil-t,
+        .formato-btn:focus .icone-perfil-t,
+        .formato-btn.selected .icone-perfil-l,
+        .formato-btn:focus .icone-perfil-l {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-t,
+        .formato-icone-l {
+            background: transparent !important;
+        }
+        .formulario-titulo #icone-formato {
+            display: flex;
+            align-items: center;
+            margin-right: 6px;
+        }
+        .formulario-titulo #icone-formato > * {
+            margin-right: 6px;
+        }
