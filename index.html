@@ -11,29 +11,30 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            min-height: 100vh;
-            min-width: 100vw;
+            background: #1a2331;
+            color: #faf6d7;
+            font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
         .container {
-            background: #fff;
-            width: calc(100vw - 80px);
-            min-height: calc(100vh - 80px);
-            margin: 40px;
-            padding: 20px 40px;
-            border-radius: 8px;
-            box-sizing: border-box;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 0 16px;
         }
-        h2 {
+        
+        h1.titulo {
+            font-size: 2.8rem;
+            font-weight: 800;
             text-align: center;
-            color: #333;
+            margin-top: 48px;
+            margin-bottom: 8px;
+        }
+        p.subtitulo {
+            text-align: center;
+            color: #b5b5c3;
+            font-size: 1.15rem;
+            margin-bottom: 36px;
         }
         label {
             display: block;
@@ -45,8 +46,8 @@
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+            border-radius: 5px;
+ 
             font-size: 1em;
         }
         button {
@@ -109,345 +110,1097 @@
         .selecao-formatos {
             display: flex;
             flex-wrap: wrap;
-            gap: 18px;
+            gap: 16px;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            width: 100%;
+            overflow-x: auto;
         }
         .btn-formato {
-            height: 90px;
-            min-width: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #0072c6;
-            background: #fff;
-            color: #0072c6;
-            border-radius: 8px;
+            padding: 18px 28px 10px 28px;
+            border: 2px solid #23232a;
+            background: #23232a;
+            color: #b5b5c3;
+            border-radius: 12px;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s, color 0.2s, border 0.2s;
-            font-size: 0.95em;
-            text-align: center;
+            font-size: 1em;
+            min-width: 120px;
             margin: 0;
-            box-sizing: border-box;
-        }
-        .selecao-formatos {
+            white-space: nowrap;
             display: flex;
-            flex-wrap: nowrap;
-            gap: 18px;
-            justify-content: flex-start;
-            overflow-x: auto;
+            flex-direction: column;
+            align-items: center;
         }
-        .btn-formato.selected {
-            background: #0072c6;
+        .btn-formato.selected,
+        .btn-formato:focus {
+            background: #fff;
+            color: #18181b;
+            border: 2px solid #fff;
+        }
+        .btn-formato img {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 8px;
+            filter: brightness(0.9) invert(0.8);
+        }
+        .btn-formato.selected img,
+        .btn-formato:focus img {
+            filter: none;
+        }
+        .btn-formato span {
+            margin-top: 2px;
+        }
+            .formatos-lista {
+            display: flex;
+            flex-wrap: nowrap;           /* permite quebrar para a linha de baixo */
+            gap: 16px;                 /* diminui o espaço entre os cards */
+            justify-content: center;
+            align-items: flex-end;
+            margin: 32px 0 40px 0;
+            overflow-x: unset;         /* remove rolagem horizontal */
+        }
+        
+
+        .formato-btn {
+            width: 180px;
+            height: 110px;
+            background: #1a2331;
+            border: 2px solid #546071;
+            border-radius: 16px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centraliza tudo verticalmente */
+            cursor: pointer;
+            transition: border 0.2s, background 0.2s, color 0.2s;
+            color: #e0e0e0;
+            font-size: 13px;
+            font-weight: 600;
+            outline: none;
+            margin: 0;
+            box-shadow: none;
+            gap: 0;
+            overflow: hidden;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 8px 8px;
+        }
+        .formato-icone {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px auto;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+        .formato-btn span:last-child {
+            font-size: 1.08em;
+            width: 100%;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            display: block;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+
+
+        .formato-btn.selected,
+        .formato-btn:focus {
+            border: 2px solid #fff;
+            background: #fff;
+            color: #18181b;
+        }
+
+        .formato-btn.selected .formato-icone,
+        .formato-btn:focus .formato-icone {
+            background: #18181b;
+        }
+        .formato-circulo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+        .formato-quadrado {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+        }
+        .formato-hex {
+            width: 38px;
+            height: 38px;
+            background: none;
+            position: relative;
+        }
+        .formato-hex::before {
+            content: "";
+            display: block;
+            width: 38px;
+            height: 38px;
+            background: #b5b5c3;
+            clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+        }
+        .formato-btn.selected .formato-hex::before,
+        .formato-btn:focus .formato-hex::before {
+            background: #18181b;
+        }
+        .formato-chata {
+            width: 50px;           /* igual ao tubo retangular */
+            height: 14px;          /* mais baixo para parecer uma barra chata */
+            border-radius: 2px;
+            background: #ffffff;      /* preenchido */
+            border: 3px solid #ffffff;
+            box-sizing: border-box;
+            display: block;
+            margin: 4px auto 0 auto; /* centraliza e alinha com os outros ícones */
+        }
+        .formato-btn.selected .formato-chata,
+        .formato-btn:focus .formato-chata {
+            background: #18181b;
+            border-color: #18181b;
+        }
+        .formato-tubo-circulo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;      /* cor padrão da borda */
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-circulo,
+        .formato-btn:focus .formato-tubo-circulo {
+            border-color: #18181b;           /* cor da borda quando selecionado */
+            background: transparent;         /* mantém o fundo transparente */
+        }
+        
+        .formato-tubo-quadrado {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            border: 3px solid #ffffff;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-quadrado,
+        .formato-btn:focus .formato-tubo-quadrado {
+            border-color: #18181b;
+            background: transparent;
+        }
+        
+        .formato-tubo-retangular {
+            width: 50px;
+            height: 38px;
+            border-radius: 8px;
+            border: 3px solid #ffffff;
+            background: transparent;
+            box-sizing: border-box;
+            display: block;
+            margin: -4px auto 0 auto;
+            transition: border-color 0.2s;
+        }
+        .formato-btn.selected .formato-tubo-retangular,
+        .formato-btn:focus .formato-tubo-retangular {
+            border-color: #18181b;
+            background: transparent;
+        }
+        @media (max-width: 600px) {
+            .selecao-materiais {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-material {
+                width: 100%;
+            }
+        }
+        
+        .formato-barra-retangular {
+            width: 50px;           /* Mais largo que o quadrado */
+            height: 38px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 3px solid #ffffff;
+            box-sizing: border-box;
+            display: block;
+            margin: -4px auto 0 auto;
+        }
+        .formato-btn.selected .formato-barra-retangular,
+        .formato-btn:focus .formato-barra-retangular {
+            background: #18181b;
+            border-color: #18181b;
+        }
+
+        .icone-chapa {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-chapa,
+        .formato-btn:focus .icone-chapa {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-chapa {
+            background: transparent !important;
+        }
+
+        .formulario-peso {
+            background: #546071;
+            border-radius: 16px;
+            border: 1px solid #33343a;
+            margin: 0;
+            padding: 24px 32px 16px 32px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .formulario-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .formulario-titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .formulario-nome {
             color: #fff;
-            border: 2px solid #005fa3;
         }
-        .btn-formato:hover {
-            background: #e6f7ff;
+        .formulario-quantidade {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .formulario-quantidade label {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+        .formulario-quantidade input {
+            width: 60px;
+            background: #18181b;
+            color: #fff;
+            border: 1px solid #001fd1;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 1.1em;
+            outline: none;
+            text-align: right;
+        }
+        .linha-campos {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        .campo {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0;
+            min-width: 120px;
+        }
+        .campo label {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 6px;
+        }
+        .campo .input-sufixo input[type="number"],
+        .campo .input-sufixo input[type="text"] {
+            width: 50%;
+            min-width: 120px;
+            box-sizing: border-box;
+            color: #fff;
+            height: 40px;
+            background: #435164;
+        }
+        #peso {
+            width: 50%;
+            min-width: 120px;
+            box-sizing: border-box;
+            color: #ff7b00;
+            height: 40px;
+            background: #1b2533;
+ 
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 1.1em;
+            outline: none;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        label[for="peso"] {
+            color: #ffffff;
+        }
+
+        .formulario-material label {
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 25px;
+            margin-right: 4px;
+        }
+        .formulario-material select {
+            background: #1b2533;
+            color: #fff;
+
+            padding: 8px 10px;
+            font-size: 1.1em;
+            outline: none;
+        }
+        .formato-label {
+            display: block;
+            min-height: 2.2em;      /* Ajuste conforme o tamanho da fonte */
+            line-height: 1.1em;
+            text-align: center;
+            /* Garante alinhamento ao topo */
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            white-space: normal;
+        }
+        .icone-perfil-u {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-perfil-u,
+        .formato-btn:focus .icone-perfil-u {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-u {
+            background: transparent !important;
+        }
+        .icone-perfil-t, .icone-perfil-l {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* branco */
+            transition: filter 0.2s;
+        }
+        .formato-btn.selected .icone-perfil-t,
+        .formato-btn:focus .icone-perfil-t,
+        .formato-btn.selected .icone-perfil-l,
+        .formato-btn:focus .icone-perfil-l {
+            filter: brightness(0) invert(0); /* preto */
+        }
+        .formato-icone-t,
+        .formato-icone-l {
+            background: transparent !important;
+        }
+        .formulario-titulo #icone-formato {
+            display: flex;
+            align-items: center;
+            margin-right: 6px;
+        }
+        .formulario-titulo #icone-formato > * {
+            margin-right: 6px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Calculadora de Peso</h2>
+        <h1 class="titulo">Calculadora de Peso de Materias</h1>
+        <p class="subtitulo"></p>
         <form id="calcForm">
-            <div class="selecao-materiais">
-                <button type="button" class="btn-material selected"  data-material="aco_carbono">AÇO CARBONO</button>
-                <button type="button" class="btn-material" data-material="aco_inox">AÇO INOX</button>
-                <button type="button" class="btn-material" data-material="aluminio">ALUMÍNIO</button>
-                <button type="button" class="btn-material" data-material="cobre">COBRE</button>
-                <button type="button" class="btn-material" data-material="latao">LATÃO</button>
-                <button type="button" class="btn-material" data-material="bronze">BRONZE</button>
+            <div class="formatos-lista">
+                <button type="button" class="formato-btn selected" data-formato="barra_redonda">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-circulo"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Barra redonda</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="barra_quadrada">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-quadrado"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Barra quadrada</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="barra_retangular">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-barra-retangular"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Barra retangular</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="barra_chata">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-chata"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Barra chata</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="chapa">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-icone-chapa">
+                        <img src="assets/img/chapa.png" alt="Chapa" class="icone-chapa">
+                    </span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Chapa</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="tubo_redondo">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-tubo-circulo"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Tubo redondo</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="tubo_quadrado">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-tubo-quadrado"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Tubo quadrado</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="tubo_retangular">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-tubo-retangular"></span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Tubo retangular</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="perfil_t">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-icone-t">
+                        <img src="assets/img/perfil_t.png" alt="Perfil T" class="icone-perfil-t">
+                    </span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Perfil T</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="perfil_u">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-icone-u">
+                        <img src="assets/img/perfil_u.png" alt="Perfil U" class="icone-perfil-u">
+                    </span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Perfil U</span>
+                </button>
+                <button type="button" class="formato-btn" data-formato="perfil_l">
+                    <span style="flex:1"></span>
+                    <span class="formato-icone formato-icone-l">
+                        <img src="assets/img/perfil_l.png" alt="Perfil L" class="icone-perfil-l">
+                    </span>
+                    <span style="flex:1"></span>
+                    <span class="formato-label">Perfil L</span>
+                </button>
             </div>
 
-            <div class="selecao-formatos">
-                <button type="button" class="btn-formato selected" data-formato="barra_quadrada">
-                    <img src="assets/img/barra_quadrada.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Barra Quadrada
-                </button>
-                <button type="button" class="btn-formato" data-formato="barra_retangular">
-                    <img src="assets/img/barra_retangular.png" style="width:50px; height:40px; margin-bottom:6px;">
-                    Barra Retangular
-                </button>
-                <button type="button" class="btn-formato" data-formato="barra">
-                    <img src="assets/img/barra_redonda.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Barra Redonda
-                </button>
-                <button type="button" class="btn-formato" data-formato="chapa">
-                    <img src="assets/img/chapa.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Chapa
-                </button>
-                <button type="button" class="btn-formato" data-formato="tubo">
-                    <img src="assets/img/tubo_redondo.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Tubo Redondo
-                </button>
-                <button type="button" class="btn-formato" data-formato="tubo_quadrado">
-                    <img src="assets/img/tubo_quadrado.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Tubo Quadrado
-                </button>
-                <button type="button" class="btn-formato" data-formato="tubo_retangular">
-                    <img src="assets/img/tubo_retangular.png" style="width:50px; height:40px; margin-bottom:6px;">
-                    Tubo Retangular
-                </button>
-                <button type="button" class="btn-formato" data-formato="perfil_l">
-                    <img src="assets/img/perfil_l.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Perfil L
-                </button>
-                <button type="button" class="btn-formato" data-formato="perfil_t">
-                    <img src="assets/img/perfil_t.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Perfil T
-                </button>
-                <button type="button" class="btn-formato" data-formato="perfil">
-                    <img src="assets/img/perfil_u.png" style="width:40px; height:40px; margin-bottom:6px;">
-                    Perfil U
-                </button>
+    <div class="formulario-peso">
+        <div class="formulario-header">
+            <div class="formulario-titulo">
+                <span id="icone-formato"></span>
+                <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        const formato = document.getElementById('formato').value;
+                        document.getElementById('icone-formato').innerHTML = iconesFormatos[formato] || '';
+                    });
+                </script>
+                <span class="formulario-nome">Barra redonda</span>
             </div>
-            <input type="hidden" id="material" required>
-            <input type="hidden" id="formato" required>
-            <div id="dimensoes"></div>
-            <button type="submit">Calcular Peso</button>
-        </form>
-        <div class="resultado" id="resultado"></div>
-    </div>
+            <div class="formulario-material" style="display: flex; align-items: center; gap: 10px;">
+                <label for="material">Material:</label>
+                <select id="material">
+                    <option value="aco_carbono">Aço Carbono</option>
+                    <option value="aco_inox">Aço Inox</option>
+                    <option value="aluminio">Alumínio</option>
+                    <option value="cobre">Cobre</option>
+                    <option value="latao">Latão</option>
+                    <option value="bronze">Bronze</option>
+                </select>
+                <label for="densidade" style="margin-left:16px;">Densidade:</label>
+                <input type="number" id="densidade" min="0.1" step="0.01" style="width:120px; height:22px; background:#1b2533; color:#fff; border-radius:6px; padding:6px 8px; font-size:1em;" />
+                <span style="color:#fff; margin-left:4px;">g/cm³</span>
+            </div>
+        </div>
+        <div class="peso" id="campos-dinamicos"></div>
+        <div class="peso">
+            <label for="peso">Peso total</label>
+            <div class="input-sufixo">
+                <input type="text" id="peso" readonly placeholder="">
+                <span class="sufixo">kg</span>
+            </div>
+        </div>
+    <input type="hidden" id="material" value="aco_carbono">
+    <input type="hidden" id="formato" value="barra_redonda">
 
     <script>
-        const formato = document.getElementById('formato');
-        const dimensoesDiv = document.getElementById('dimensoes');
-        const resultadoDiv = document.getElementById('resultado');
-
-        const densidades = {
-            'aco_carbono': 7.85,
-            'aco_inox': 7.90,
-            'aluminio': 2.70,
-            'cobre': 8.96,
-            'latao': 8.50,
-            'bronze': 8.80
-        };
-
-        const materialInput = document.getElementById('material');
-        const formatoInput = document.getElementById('formato');
-        const form = document.getElementById('calcForm');
-
-
-
-        // Seleção dos materiais
-        document.querySelectorAll('.btn-material').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.btn-material').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                materialInput.value = btn.getAttribute('data-material');
-                resultadoDiv.textContent = '';
-            });
-        });
-
-        // Seleção dos formatos
-        document.querySelectorAll('.btn-formato').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.btn-formato').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                formatoInput.value = btn.getAttribute('data-formato');
-                resultadoDiv.textContent = '';
-
-
-                const tipo = btn.getAttribute('data-formato');
-                let html = '';
-                if (tipo === 'barra') {
-                    html = `
-                        <label for="diametro">Diâmetro (mm)</label>
-                        <input type="number" id="diametro" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'barra_quadrada') {
-                    html = `
-                        <label for="lado">Lado (mm)</label>
-                        <input type="number" id="lado" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'barra_retangular') {
-                    html = `
-                        <label for="largura">Largura (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="altura">Altura (mm)</label>
-                        <input type="number" id="altura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'tubo') {
-                    html = `
-                        <label for="diametroExt">Diâmetro Externo (mm)</label>
-                        <input type="number" id="diametroExt" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'tubo_quadrado') {
-                    html = `
-                        <label for="lado">Lado Externo (mm)</label>
-                        <input type="number" id="lado" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'tubo_retangular') {
-                    html = `
-                        <label for="largura">Largura Externa (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="altura">Altura Externa (mm)</label>
-                        <input type="number" id="altura" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'chapa') {
-                    html = `
-                        <label for="largura">Largura (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'perfil') {
-                    html = `
-                        <label for="altura">Altura (mm)</label>
-                        <input type="number" id="altura" min="0.1" step="0.1" required>
-                        <label for="largura">Largura (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'perfil_t') {
-                    html = `
-                        <label for="altura">Altura (mm)</label>
-                        <input type="number" id="altura" min="0.1" step="0.1" required>
-                        <label for="largura">Largura (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                } else if (tipo === 'perfil_l') {
-                    html = `
-                        <label for="altura">Altura (mm)</label>
-                        <input type="number" id="altura" min="0.1" step="0.1" required>
-                        <label for="largura">Largura (mm)</label>
-                        <input type="number" id="largura" min="0.1" step="0.1" required>
-                        <label for="espessura">Espessura (mm)</label>
-                        <input type="number" id="espessura" min="0.1" step="0.1" required>
-                        <label for="comprimento">Comprimento (mm)</label>
-                        <input type="number" id="comprimento" min="0.1" step="0.1" required>
-                    `;
-                }
-                dimensoesDiv.innerHTML = html;
-            });
-        });
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const material = document.getElementById('material').value;
-            const tipo = formato.value;
+        function calcularPeso() {
+            const material = document.getElementById('material')?.value;
+            const tipo = document.getElementById('formato')?.value;
+            const densidades = {
+                'aco_carbono': 7.85,
+                'aco_inox': 7.90,
+                'aluminio': 2.70,
+                'cobre': 8.96,
+                'latao': 8.50,
+                'bronze': 8.80
+            };
+            if (!material || !tipo) return;
+        
+            const densidade = parseFloat(document.getElementById('densidade').value);
             let peso = 0;
-
-            if (!material || !tipo) {
-                resultadoDiv.textContent = 'Selecione o material e o formato.';
-                return;
-            }
-
-            const densidade = densidades[material]; // g/cm³
-
-            if (tipo === 'barra') {
-                const diametro = parseFloat(document.getElementById('diametro').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                // Volume = π * (d/2)^2 * comprimento (mm³)
-                let volume = Math.PI * Math.pow(diametro/2, 2) * comprimento; // mm³
-                volume = volume / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'barra_quadrada') {
-                const lado = parseFloat(document.getElementById('lado').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                let volume = lado * lado * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'barra_retangular') {
-                const largura = parseFloat(document.getElementById('largura').value);
-                const altura = parseFloat(document.getElementById('altura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                let volume = largura * altura * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'tubo') {
-                const diametroExt = parseFloat(document.getElementById('diametroExt').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                const diametroInt = diametroExt - 2 * espessura;
-                let volumeExt = Math.PI * Math.pow(diametroExt/2, 2) * comprimento;
-                let volumeInt = Math.PI * Math.pow(diametroInt/2, 2) * comprimento;
-                let volume = (volumeExt - volumeInt) / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'tubo_quadrado') {
-                const lado = parseFloat(document.getElementById('lado').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                let ladoInt = lado - 2 * espessura;
-                let volume = (Math.pow(lado,2) - Math.pow(ladoInt,2)) * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'tubo_retangular') {
-                const largura = parseFloat(document.getElementById('largura').value);
-                const altura = parseFloat(document.getElementById('altura').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                let larguraInt = largura - 2 * espessura;
-                let alturaInt = altura - 2 * espessura;
-                let volume = ((largura * altura) - (larguraInt * alturaInt)) * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'chapa') {
-                const largura = parseFloat(document.getElementById('largura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                let volume = largura * comprimento * espessura / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'perfil') {
-                const altura = parseFloat(document.getElementById('altura').value);
-                const largura = parseFloat(document.getElementById('largura').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                let area = 2 * altura * espessura + (largura - 2 * espessura) * espessura;
-                let volume = area * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
-            } else if (tipo === 'perfil_t' || tipo === 'perfil_l') {
-                const altura = parseFloat(document.getElementById('altura').value);
-                const largura = parseFloat(document.getElementById('largura').value);
-                const espessura = parseFloat(document.getElementById('espessura').value);
-                const comprimento = parseFloat(document.getElementById('comprimento').value);
-                // Aproximação: área da seção transversal
-                let area = 0;
-                if (tipo === 'perfil_t') {
-                    area = (largura * espessura) + ((altura - espessura) * espessura);
-                } else {
-                    area = (largura * espessura) + ((altura - espessura) * espessura);
+        
+            // Barra redonda
+            if (tipo === 'barra_redonda') {
+                const diametro = parseFloat(document.getElementById('diametro')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (diametro && comprimento && densidade) {
+                    let volume = Math.PI * Math.pow(diametro/2, 2) * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
                 }
-                let volume = area * comprimento / 1000; // cm³
-                peso = volume * densidade / 1000; // kg
+            }
+            // Barra quadrada
+            else if (tipo === 'barra_quadrada') {
+                const lado = parseFloat(document.getElementById('lado')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (lado && comprimento && densidade) {
+                    let volume = Math.pow(lado, 2) * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
+            }
+            // Barra retangular ou barra chata
+            else if (tipo === 'barra_retangular' || tipo === 'barra_chata') {
+                const largura = parseFloat(document.getElementById('largura')?.value || 0);
+                const altura = parseFloat(document.getElementById('altura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (largura && altura && comprimento && densidade) {
+                    let volume = largura * altura * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
+            }
+            // Chapa
+            else if (tipo === 'chapa') {
+                const largura = parseFloat(document.getElementById('largura')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (largura && espessura && comprimento && densidade) {
+                    let volume = largura * espessura * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
+            }
+            // Tubo redondo
+            else if (tipo === 'tubo_redondo') {
+                const diametro_ext = parseFloat(document.getElementById('diametro_ext')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (diametro_ext && espessura && comprimento && densidade) {
+                    let diametro_int = diametro_ext - 2 * espessura;
+                    let area_ext = Math.PI * Math.pow(diametro_ext/2, 2);
+                    let area_int = Math.PI * Math.pow(diametro_int/2, 2);
+                    let area = area_ext - area_int;
+                    let volume = area * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
+            }
+            // Tubo quadrado
+            else if (tipo === 'tubo_quadrado') {
+                const lado_ext = parseFloat(document.getElementById('lado_ext')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (lado_ext && espessura && comprimento && densidade) {
+                    let lado_int = lado_ext - 2 * espessura;
+                    let area_ext = Math.pow(lado_ext, 2);
+                    let area_int = Math.pow(lado_int, 2);
+                    let area = area_ext - area_int;
+                    let volume = area * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
+            }
+            // Tubo retangular
+            else if (tipo === 'tubo_retangular') {
+                const largura_ext = parseFloat(document.getElementById('largura_ext')?.value || 0);
+                const altura_ext = parseFloat(document.getElementById('altura_ext')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                const quantidade = parseInt(document.getElementById('quantidade')?.value || 1);
+                if (largura_ext && altura_ext && espessura && comprimento && densidade) {
+                    let largura_int = largura_ext - 2 * espessura;
+                    let altura_int = altura_ext - 2 * espessura;
+                    let area_ext = largura_ext * altura_ext;
+                    let area_int = largura_int * altura_int;
+                    let area = area_ext - area_int;
+                    let volume = area * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                    peso = peso * quantidade;
+                }
             }
 
-            resultadoDiv.textContent = `Peso aproximado: ${peso.toFixed(2)} kg`;
+            // Perfil T, U, L (usando altura e comprimento)
+            else if (tipo === 'perfil_l') {
+                const altura = parseFloat(document.getElementById('altura')?.value || 0);
+                const largura = parseFloat(document.getElementById('largura')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                if (altura && largura && espessura && comprimento && densidade) {
+                    // Volume L = (altura + largura - espessura) * espessura * comprimento
+                    let volume = (altura + largura - espessura) * espessura * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                }
+            }
+            else if (tipo === 'perfil_u' || tipo === 'perfil_t') {
+                const altura = parseFloat(document.getElementById('altura')?.value || 0);
+                const largura = parseFloat(document.getElementById('largura')?.value || 0);
+                const espessura = parseFloat(document.getElementById('espessura')?.value || 0);
+                const comprimento = parseFloat(document.getElementById('comprimento')?.value || 0);
+                if (altura && largura && espessura && comprimento && densidade) {
+                    // Volume U/T = [2*altura*espessura + (largura-2*espessura)*espessura] * comprimento
+                    let volume = (2 * altura * espessura + (largura - 2 * espessura) * espessura) * comprimento; // mm³
+                    volume = volume / 1000; // cm³
+                    peso = volume * densidade / 1000; // kg
+                }
+            }
+        
+            // Atualiza o campo de peso total
+            const pesoInput = document.getElementById('peso');
+            if (pesoInput) pesoInput.value = peso > 0 ? peso.toFixed(2) : '';
+        }
+        
+        // Adiciona eventos a todos os inputs relevantes
+        [
+            'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+            'diametro_ext','lado_ext','largura_ext','altura_ext','area','material','formato'
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', calcularPeso);
         });
+</script>
+<script>
+const camposPorFormato = {
+    barra_redonda: `
+        <div class="campo">
+            <label for="diametro">Diâmetro</label>
+            <div class="input-sufixo">
+                <input type="number" id="diametro" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    barra_quadrada: `
+        <div class="campo">
+            <label for="lado">Lado</label>
+            <div class="input-sufixo">
+                <input type="number" id="lado" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    barra_retangular: `
+        <div class="campo">
+            <label for="largura">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="altura" style="margin-top:12px;">Altura</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    barra_chata: `
+        <div class="campo">
+            <label for="largura">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="altura" style="margin-top:12px;">Altura</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    chapa: `
+        <div class="campo">
+            <label for="largura">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    tubo_redondo: `
+        <div class="campo">
+            <label for="diametro_ext">Diâmetro externo</label>
+            <div class="input-sufixo">
+                <input type="number" id="diametro_ext" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    tubo_quadrado: `
+        <div class="campo">
+            <label for="lado_ext">Lado externo</label>
+            <div class="input-sufixo">
+                <input type="number" id="lado_ext" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    tubo_retangular: `
+        <div class="campo">
+            <label for="largura_ext">Largura externa</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura_ext" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="altura_ext" style="margin-top:12px;">Altura externa</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura_ext" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    perfil_t: `
+        <div class="campo">
+            <label for="altura">Altura</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="largura" style="margin-top:12px;">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    perfil_u: `
+        <div class="campo">
+            <label for="altura">Altura</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="largura" style="margin-top:12px;">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `,
+    perfil_l: `
+        <div class="campo">
+            <label for="altura">Altura</label>
+            <div class="input-sufixo">
+                <input type="number" id="altura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="largura" style="margin-top:12px;">Largura</label>
+            <div class="input-sufixo">
+                <input type="number" id="largura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="espessura" style="margin-top:12px;">Espessura</label>
+            <div class="input-sufixo">
+                <input type="number" id="espessura" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+            <label for="comprimento" style="margin-top:12px;">Comprimento</label>
+            <div class="input-sufixo">
+                <input type="number" id="comprimento" min="0.1" step="0.1" required>
+                <span class="sufixo">mm</span>
+            </div>
+        </div>
+    `
+};
+</script>
+<script>
+document.querySelectorAll('.formato-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Atualiza seleção visual
+        document.querySelectorAll('.formato-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Atualiza campo oculto
+        document.getElementById('formato').value = btn.getAttribute('data-formato');
+        // Atualiza campos dinâmicos
+        const formato = btn.getAttribute('data-formato');
+        document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+        // Adiciona eventos para cálculo automático nos novos campos
+        [
+            'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+            'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', calcularPeso);
+        });
+        calcularPeso(); // Atualiza o peso ao trocar formato
+    });
+});
 
-        window.addEventListener('DOMContentLoaded', function() {
-            const btnSelecionado = document.querySelector('.btn-formato.selected');
-            if (btnSelecionado) btnSelecionado.click();
-            formatoInput.value = btnSelecionado.getAttribute('data-formato');
-            const btnMaterial = document.querySelector('.btn-material.selected');
-            if (btnMaterial) materialInput.value = btnMaterial.getAttribute('data-material');
+// Inicializa campos ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+    const formato = document.getElementById('formato').value;
+    document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+    [
+        'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+        'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+    ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', calcularPeso);
+    });
+    calcularPeso();
+});
+</script>
+<script>
+const nomesFormatos = {
+    barra_redonda: "Barra redonda",
+    barra_quadrada: "Barra quadrada",
+    barra_retangular: "Barra retangular",
+    barra_chata: "Barra chata",
+    chapa: "Chapa",
+    tubo_redondo: "Tubo redondo",
+    tubo_quadrado: "Tubo quadrado",
+    tubo_retangular: "Tubo retangular",
+    perfil_t: "Perfil T",
+    perfil_u: "Perfil U",
+    perfil_l: "Perfil L"
+};
+</script>
+<script>
+document.querySelectorAll('.formato-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Atualiza seleção visual
+        document.querySelectorAll('.formato-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Atualiza campo oculto
+        document.getElementById('formato').value = btn.getAttribute('data-formato');
+        // Atualiza campos dinâmicos
+        const formato = btn.getAttribute('data-formato');
+        document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+        // Atualiza o nome do formato na seção de peso
+        document.querySelector('.formulario-nome').textContent = nomesFormatos[formato] || '';
+        // Adiciona eventos para cálculo automático nos novos campos
+        document.getElementById('icone-formato').innerHTML = iconesFormatos[formato] || '';
+        [
+            'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+            'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', calcularPeso);
         });
-    </script>
+        calcularPeso(); // Atualiza o peso ao trocar formato
+    });
+});
+
+// Inicializa campos ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+    const formato = document.getElementById('formato').value;
+    document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+    // Atualiza o nome do formato na seção de peso
+    document.querySelector('.formulario-nome').textContent = nomesFormatos[formato] || '';
+    [
+        'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+        'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+    ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', calcularPeso);
+    });
+    calcularPeso();
+});
+</script>
+<script>
+const iconesFormatos = {
+    barra_redonda: `<span class="formato-icone formato-circulo"></span>`,
+    barra_quadrada: `<span class="formato-icone formato-quadrado"></span>`,
+    barra_retangular: `<span class="formato-icone formato-barra-retangular"></span>`,
+    barra_chata: `<span class="formato-icone formato-chata"></span>`,
+    chapa: `<span class="formato-icone formato-icone-chapa"><img src="assets/img/chapa.png" alt="Chapa" class="icone-chapa"></span>`,
+    tubo_redondo: `<span class="formato-icone formato-tubo-circulo"></span>`,
+    tubo_quadrado: `<span class="formato-icone formato-tubo-quadrado"></span>`,
+    tubo_retangular: `<span class="formato-icone formato-tubo-retangular"></span>`,
+    perfil_t: `<span class="formato-icone formato-icone-t"><img src="assets/img/perfil_t.png" alt="Perfil T" class="icone-perfil-t"></span>`,
+    perfil_u: `<span class="formato-icone formato-icone-u"><img src="assets/img/perfil_u.png" alt="Perfil U" class="icone-perfil-u"></span>`,
+    perfil_l: `<span class="formato-icone formato-icone-l"><img src="assets/img/perfil_l.png" alt="Perfil L" class="icone-perfil-l"></span>`
+};
+
+</script>
+<script>
+document.querySelectorAll('.formato-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Atualiza seleção visual
+        document.querySelectorAll('.formato-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        // Atualiza campo oculto
+        document.getElementById('formato').value = btn.getAttribute('data-formato');
+        // Atualiza campos dinâmicos
+        const formato = btn.getAttribute('data-formato');
+        document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+        // Atualiza o nome do formato na seção de peso
+        document.querySelector('.formulario-nome').textContent = nomesFormatos[formato] || '';
+        // Atualiza o ícone do formato
+        document.getElementById('icone-formato').innerHTML = iconesFormatos[formato] || '';
+        // Adiciona eventos para cálculo automático nos novos campos
+        [
+            'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+            'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', calcularPeso);
+        });
+        calcularPeso(); // Atualiza o peso ao trocar formato
+    });
+});
+
+// Inicializa campos ao carregar a página
+window.addEventListener('DOMContentLoaded', () => {
+    const formato = document.getElementById('formato').value;
+    document.getElementById('campos-dinamicos').innerHTML = camposPorFormato[formato] || '';
+    // Atualiza o nome do formato na seção de peso
+    document.querySelector('.formulario-nome').textContent = nomesFormatos[formato] || '';
+    // Atualiza o ícone do formato
+    document.getElementById('icone-formato').className = iconesFormatos[formato] || '';
+    [
+        'diametro','comprimento','quantidade','lado','largura','altura','espessura',
+        'diametro_ext','lado_ext','largura_ext','altura_ext','area'
+    ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', calcularPeso);
+    });
+    calcularPeso();
+});
+</script>
+<script>
+const densidadesPadrao = {
+    'aco_carbono': 7.85,
+    'aco_inox': 7.90,
+    'aluminio': 2.70,
+    'cobre': 8.96,
+    'latao': 8.50,
+    'bronze': 8.80
+};
+
+function atualizarDensidade() {
+    const material = document.getElementById('material').value;
+    document.getElementById('densidade').value = densidadesPadrao[material] || '';
+    calcularPeso();
+}
+
+// Atualiza densidade ao trocar material
+document.getElementById('material').addEventListener('change', atualizarDensidade);
+
+// Atualiza peso ao editar densidade manualmente
+document.getElementById('densidade').addEventListener('input', calcularPeso);
+
+// Inicializa densidade ao carregar a página
+window.addEventListener('DOMContentLoaded', atualizarDensidade);
+</script>
+
+        </form>
+    </div> 
+
+    <footer style="width:100%;text-align:center;padding:18px 0 8px 0;color:#b5b5c3;font-size:1em;letter-spacing:1px;">
+        Desenvolvido por Vitória Gabriele.
+    </footer>
 </body>
 </html>
