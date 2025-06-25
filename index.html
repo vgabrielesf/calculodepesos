@@ -95,8 +95,8 @@
                 <span class="formulario-nome">Barra redonda</span>
             </div>
             <div class="formulario-material" style="display: flex; align-items: center; gap: 10px;">
-                <label for="material">Material:</label>
-                <select id="material">
+                <label for="material-select">Material:</label>
+                <select id="material-select">
                     <option value="aco_carbono">Aço Carbono</option>
                     <option value="aco_inox">Aço Inox</option>
                     <option value="aluminio">Alumínio</option>
@@ -109,7 +109,9 @@
                 <span style="color:#fff; margin-left:4px;">g/cm³</span>
             </div>
         </div>
-        <div class="peso" id="campos-dinamicos"></div>
+        <div class="peso" id="campos-dinamicos">
+            <!-- Campos dinâmicos para cálculo aparecerão aqui -->
+        </div>
         <div class="peso">
             <label for="peso">Peso total</label>
             <div class="input-sufixo">
@@ -117,10 +119,9 @@
                 <span class="sufixo">kg</span>
             </div>
         </div>
-    <input type="hidden" id="material" value="aco_carbono">
-    <input type="hidden" id="formato" value="barra_redonda">
-    
-        </form>
+        <input type="hidden" id="material" value="aco_carbono">
+        <input type="hidden" id="formato" value="barra_redonda">
+    </form>
     </div> 
     <!-- Tabela ABNT NBR 5590 -->
      <div style="margin: 40px 0 0 0;"></div>
@@ -304,7 +305,7 @@
     <h2 style="color:#b5b5c3;text-align:center;font-size:1.2em;margin-bottom:10px;">CONVERSÃO MM ⇄ POLEGADAS</h2>
     <div style="overflow-x:auto;">
         <div style="overflow-x:auto;">
-            <table id="tabela-conversao" style="width:80%;border-collapse:collapse;font-size:0.98em;background:#23232a;table-layout:fixed;min-width:900px;margin-left:auto;margin-right:auto;">
+            <table id="tabela-conversao" style="width:80%;border-collapse:collapse;font-size:0.98em;background:#23232a;table-layout:fixed;min-width:40px;margin-left:auto;margin-right:auto;">
             <colgroup>
                 <col style="width:16.66%;">
                 <col style="width:16.66%;">
