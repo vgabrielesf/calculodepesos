@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -351,11 +352,10 @@
         }
 
         .formulario-peso {
-            background: #546071;
+            background: rgba(84, 96, 113, 0.85); /* cor com transparência */
             border-radius: 16px;
-            border: 1px solid #33343a;
+            border: 1px solid #809eaf;
             margin: 0;
-            
             padding: 24px 32px 16px 32px;
             max-width: 100%;
             display: flex;
@@ -1196,12 +1196,416 @@ document.getElementById('densidade').addEventListener('input', calcularPeso);
 // Inicializa densidade ao carregar a página
 window.addEventListener('DOMContentLoaded', atualizarDensidade);
 </script>
-
+    
         </form>
     </div> 
+    <!-- Tabela ABNT NBR 5590 -->
+     <div style="margin: 40px 0 0 0;"></div>
+        <h2 style="color:#b5b5c3;text-align:center;font-size:1.2em;margin-bottom:10px;">MEDIDAS TÉCNICAS ABNT NBR 5590</h2>
+        <div style="overflow-x:auto;">
+            <table id="tabela-abnt" style="width:100%;border-collapse:collapse;font-size:0.98em;background:#23232a;">
+            <thead style="background:#0072c6;color:#fff;">
+                <tr>
+                <th style="padding:8px 6px;border:1px solid #435164;">Diâmetro Nominal</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Diâmetro Externo (mm)</th>
+                <th class="col-espessura" style="padding:8px 6px;border:1px solid #435164;">Espessura SCH 10</th>
+                <th class="col-espessura" style="padding:8px 6px;border:1px solid #435164;">Espessura SCH 40</th>
+                <th class="col-espessura" style="padding:8px 6px;border:1px solid #435164;">Espessura SCH 80</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Peso SCH 10 (kg/m)</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Peso SCH 40 (kg/m)</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Peso SCH 80 (kg/m)</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Pressão SCH 10 (PSI)</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Pressão SCH 40 (PSI)</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">Pressão SCH 80 (PSI)</th>
+                </tr>
+            </thead>
+            <tbody style="background:#1a2331;color:#b5b5c3;">
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">15 (1/2")</td>
+                <td style="padding:6px;border:1px solid #435164;">21,30</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">2,77</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,73</td>
+                <td style="padding:6px;border:1px solid #435164;">0,77</td>
+                <td style="padding:6px;border:1px solid #435164;">1,27</td>
+                <td style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td style="padding:6px;border:1px solid #435164;">150</td>
+                <td style="padding:6px;border:1px solid #435164;">350</td>
+                <td style="padding:6px;border:1px solid #435164;">480</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">20 (3/4")</td>
+                <td style="padding:6px;border:1px solid #435164;">26,90</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">2,87</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,91</td>
+                <td style="padding:6px;border:1px solid #435164;">1,01</td>
+                <td style="padding:6px;border:1px solid #435164;">1,68</td>
+                <td style="padding:6px;border:1px solid #435164;">2,13</td>
+                <td style="padding:6px;border:1px solid #435164;">120</td>
+                <td style="padding:6px;border:1px solid #435164;">290</td>
+                <td style="padding:6px;border:1px solid #435164;">410</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">25 (1")</td>
+                <td style="padding:6px;border:1px solid #435164;">33,40</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,38</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">4,55</td>
+                <td style="padding:6px;border:1px solid #435164;">1,29</td>
+                <td style="padding:6px;border:1px solid #435164;">2,36</td>
+                <td style="padding:6px;border:1px solid #435164;">3,10</td>
+                <td style="padding:6px;border:1px solid #435164;">90</td>
+                <td style="padding:6px;border:1px solid #435164;">230</td>
+                <td style="padding:6px;border:1px solid #435164;">320</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">32 (1.1/4")</td>
+                <td style="padding:6px;border:1px solid #435164;">42,20</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,56</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">4,85</td>
+                <td style="padding:6px;border:1px solid #435164;">1,66</td>
+                <td style="padding:6px;border:1px solid #435164;">3,24</td>
+                <td style="padding:6px;border:1px solid #435164;">4,36</td>
+                <td style="padding:6px;border:1px solid #435164;">75</td>
+                <td style="padding:6px;border:1px solid #435164;">190</td>
+                <td style="padding:6px;border:1px solid #435164;">270</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">40 (1.1/2")</td>
+                <td style="padding:6px;border:1px solid #435164;">48,30</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,68</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">5,08</td>
+                <td style="padding:6px;border:1px solid #435164;">1,91</td>
+                <td style="padding:6px;border:1px solid #435164;">3,77</td>
+                <td style="padding:6px;border:1px solid #435164;">5,36</td>
+                <td style="padding:6px;border:1px solid #435164;">65</td>
+                <td style="padding:6px;border:1px solid #435164;">170</td>
+                <td style="padding:6px;border:1px solid #435164;">250</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">50 (2")</td>
+                <td style="padding:6px;border:1px solid #435164;">60,30</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">3,91</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">5,54</td>
+                <td style="padding:6px;border:1px solid #435164;">2,41</td>
+                <td style="padding:6px;border:1px solid #435164;">5,01</td>
+                <td style="padding:6px;border:1px solid #435164;">6,88</td>
+                <td style="padding:6px;border:1px solid #435164;">50</td>
+                <td style="padding:6px;border:1px solid #435164;">150</td>
+                <td style="padding:6px;border:1px solid #435164;">210</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">65 (2.1/2")</td>
+                <td style="padding:6px;border:1px solid #435164;">76,10</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">5,16</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">7,01</td>
+                <td style="padding:6px;border:1px solid #435164;">3,08</td>
+                <td style="padding:6px;border:1px solid #435164;">7,72</td>
+                <td style="padding:6px;border:1px solid #435164;">10,20</td>
+                <td style="padding:6px;border:1px solid #435164;">40</td>
+                <td style="padding:6px;border:1px solid #435164;">125</td>
+                <td style="padding:6px;border:1px solid #435164;">180</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">80 (3")</td>
+                <td style="padding:6px;border:1px solid #435164;">88,90</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">1,65</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">5,49</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">7,62</td>
+                <td style="padding:6px;border:1px solid #435164;">3,62</td>
+                <td style="padding:6px;border:1px solid #435164;">9,56</td>
+                <td style="padding:6px;border:1px solid #435164;">13,72</td>
+                <td style="padding:6px;border:1px solid #435164;">35</td>
+                <td style="padding:6px;border:1px solid #435164;">110</td>
+                <td style="padding:6px;border:1px solid #435164;">160</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">100 (4")</td>
+                <td style="padding:6px;border:1px solid #435164;">114,30</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">2,11</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">6,02</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">8,56</td>
+                <td style="padding:6px;border:1px solid #435164;">5,03</td>
+                <td style="padding:6px;border:1px solid #435164;">13,56</td>
+                <td style="padding:6px;border:1px solid #435164;">19,17</td>
+                <td style="padding:6px;border:1px solid #435164;">25</td>
+                <td style="padding:6px;border:1px solid #435164;">90</td>
+                <td style="padding:6px;border:1px solid #435164;">125</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">150 (6")</td>
+                <td style="padding:6px;border:1px solid #435164;">168,30</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">2,77</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">7,11</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">10,97</td>
+                <td style="padding:6px;border:1px solid #435164;">12,91</td>
+                <td style="padding:6px;border:1px solid #435164;">25,12</td>
+                <td style="padding:6px;border:1px solid #435164;">37,47</td>
+                <td style="padding:6px;border:1px solid #435164;">10</td>
+                <td style="padding:6px;border:1px solid #435164;">60</td>
+                <td style="padding:6px;border:1px solid #435164;">95</td>
+                </tr>
+                <tr>
+                <td style="padding:6px;border:1px solid #435164;">200 (8")</td>
+                <td style="padding:6px;border:1px solid #435164;">219,10</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">2,77</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">8,18</td>
+                <td class="col-espessura" style="padding:6px;border:1px solid #435164;">12,70</td>
+                <td style="padding:6px;border:1px solid #435164;">16,95</td>
+                <td style="padding:6px;border:1px solid #435164;">38,19</td>
+                <td style="padding:6px;border:1px solid #435164;">59,77</td>
+                <td style="padding:6px;border:1px solid #435164;">5</td>
+                <td style="padding:6px;border:1px solid #435164;">45</td>
+                <td style="padding:6px;border:1px solid #435164;">70</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+        <style>
+        /* Linha destacada ao clicar */
+        #tabela-abnt tr.destacado,
+        #tabela-abnt tr.destacado td,
+        #tabela-abnt tr.destacado .col-espessura {
+            background: #b5b5c3 !important;
+            color: #23232a !important;
+            font-weight: bold;
+            transition: background 0.2s, color 0.2s;
+        }
+        </style>
+        <script>
+        // Destacar linha ao clicar
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabela = document.getElementById('tabela-abnt');
+            if (!tabela) return;
+            tabela.querySelectorAll('tbody tr').forEach(function (linha) {
+            linha.addEventListener('click', function () {
+                tabela.querySelectorAll('tbody tr').forEach(l => l.classList.remove('destacado'));
+                linha.classList.add('destacado');
+            });
+            });
+        });
+    </script>
+    <h2 style="color:#b5b5c3;text-align:center;font-size:1.2em;margin-bottom:10px;">CONVERSÃO MM ⇄ POLEGADAS</h2>
+    <div style="overflow-x:auto;">
+        <div style="overflow-x:auto;">
+            <table id="tabela-conversao" style="width:80%;border-collapse:collapse;font-size:0.98em;background:#23232a;table-layout:fixed;min-width:900px;margin-left:auto;margin-right:auto;">
+            <colgroup>
+                <col style="width:16.66%;">
+                <col style="width:16.66%;">
+                <col style="width:16.66%;">
+                <col style="width:16.66%;">
+                <col style="width:16.66%;">
+                <col style="width:16.66%;">
+            </colgroup>
+            <thead style="background:#0072c6;color:#fff;">
+                <tr>
+                <th style="padding:8px 6px;border:1px solid #435164;">pol</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">mm</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">pol</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">mm</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">pol</th>
+                <th style="padding:8px 6px;border:1px solid #435164;">mm</th>
+                </tr>
+            </thead>
+            <tbody style="background:#1a2331;color:#b5b5c3;">
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1/8"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">3,18</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1/2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">12,70</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">50,80</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1/4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">6,35</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">5/8"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">15,88</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">2 1/2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">63,50</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">3/8"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">9,53</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">3/4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">19,05</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">3"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">76,20</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">7/16"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">11,11</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">25,40</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">101,60</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1/2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">12,70</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1 1/4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">31,75</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">6"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">152,40</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">9/16"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">14,29</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1 1/2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">38,10</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">8"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">203,20</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">5/8"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">15,88</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">1 3/4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">44,45</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">10"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">254,00</td>
+                </tr>
+                <tr>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">3/4"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">19,05</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">2"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">50,80</td>
+                <td class="pol" style="padding:6px;border:1px solid #435164;">12"</td>
+                <td class="mm" style="padding:6px;border:1px solid #435164;">304,80</td>
+                </tr>
+                <!-- Linha para conversão manual alternativa compacta -->
+                <tr>
+                <td colspan="6" style="padding:10px 4px; border:1px solid #435164; text-align:center; background:linear-gradient(90deg,#23232a 70%,#0072c6 100%); border-radius:8px;">
+                    <form onsubmit="event.preventDefault();converterValor();" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+                        <div style="display:flex; flex-wrap:nowrap; align-items:center; justify-content:center; gap:8px;">
+                            <label for="valor-converter" style="font-weight:600; color:#fff; font-size:1em; letter-spacing:0.5px;display:flex;align-items:center;margin:0;">
+                                <svg width="18" height="18" style="vertical-align:middle;margin-right:4px;" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 17v-2a4 4 0 0 0-4-4H7m0 0l3-3m-3 3l3 3"></path></svg>
+                                Conversão:
+                            </label>
+                            <input type="text" id="valor-converter" placeholder='Ex: 1 1/4 ou 0.5' style="width:140px;padding:4px 8px;border-radius:5px;border:1.2px solid #0072c6;background:#1a2331;color:#fff;font-size:0.98em;outline:none;" autocomplete="off">
+                            <span style="color:#fff;">pol → mm =</span>
+                            <input type="text" id="resultado-conversao" readonly style="width:90px;padding:4px 8px;border-radius:5px;border:1.2px solid #0072c6;background:#1a2331;color:#fff;font-size:0.98em;outline:none;font-weight:bold;min-width:50px;display:inline-block;">
+                        </div>
+                    <button type="submit" style="padding:8px 12px;border-radius:5px;background:#0072c6;color:#fff;border:none;cursor:pointer;font-weight:600;transition:background 0.2s;font-size:0.98em; margin-top:4px;">Converter</button>
+                    </form>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+        <script>
+        // Função para converter polegada fracionada (ex: "1 1/4", "3/8", "2", "0.5")
+        function parsePolegadaFracionada(str) {
+            str = (str || '').trim().replace(',', '.');
+            if (!str) return NaN;
+            // Ex: "1 1/4"
+            let partes = str.split(' ');
+            let total = 0;
+            if (partes.length === 2) {
+                let inteiro = parseFloat(partes[0]);
+                let frac = partes[1];
+                let fracParts = frac.split('/');
+                if (fracParts.length === 2) {
+                    let numerador = parseFloat(fracParts[0]);
+                    let denominador = parseFloat(fracParts[1]);
+                    if (!isNaN(inteiro) && !isNaN(numerador) && !isNaN(denominador) && denominador !== 0) {
+                        total = inteiro + (numerador / denominador);
+                    }
+                }
+            } else if (str.includes('/')) {
+                // Ex: "3/8"
+                let fracParts = str.split('/');
+                if (fracParts.length === 2) {
+                    let numerador = parseFloat(fracParts[0]);
+                    let denominador = parseFloat(fracParts[1]);
+                    if (!isNaN(numerador) && !isNaN(denominador) && denominador !== 0) {
+                        total = numerador / denominador;
+                    }
+                }
+            } else {
+                // Ex: "2" ou "0.5"
+                let val = parseFloat(str);
+                if (!isNaN(val)) total = val;
+            }
+            return total;
+        }
 
-    <footer style="width:100%;text-align:center;padding:18px 0 8px 0;color:#b5b5c3;font-size:1em;letter-spacing:1px;">
+        function converterValor() {
+            const valorStr = document.getElementById('valor-converter').value;
+            let valor = parsePolegadaFracionada(valorStr);
+            let resultado = '';
+            if (!isNaN(valor) && valor > 0) {
+                resultado = (valor * 25.4).toFixed(2) + ' mm';
+            } else {
+                resultado = '';
+            }
+            document.getElementById('resultado-conversao').value = resultado;
+        }
+
+        // Destacar apenas célula pol e mm ao clicar
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabela = document.getElementById('tabela-conversao');
+            if (!tabela) return;
+            tabela.querySelectorAll('tbody tr').forEach(function (linha) {
+                // Não destacar a última linha (conversão manual)
+                if (linha.querySelector('input')) return;
+                // Para cada célula de polegada, adicionar evento
+                linha.querySelectorAll('.pol').forEach(function (celPol, idx) {
+                    celPol.addEventListener('click', function () {
+                        // Remove destaque anterior
+                        tabela.querySelectorAll('.pol, .mm').forEach(cel => cel.classList.remove('destacado'));
+                        // Destaca apenas esta célula pol e sua mm correspondente
+                        celPol.classList.add('destacado');
+                        const celMM = celPol.nextElementSibling;
+                        if (celMM && celMM.classList.contains('mm')) {
+                            celMM.classList.add('destacado');
+                        }
+                    });
+                });
+            });
+        });
+        </script>
+        <style>
+        #tabela-conversao th,
+        #tabela-conversao td {
+            background: #1a2331 !important;
+            color: #b5b5c3 !important;
+            text-align: center;
+            /* width definida pelo colgroup */
+        }
+        #tabela-conversao thead th {
+            background: #0072c6 !important;
+            color: #fff !important;
+        }
+        #tabela-conversao tr:last-child td {
+            background: #23232a !important;
+            color: #fff !important;
+        }
+        #tabela-conversao tbody tr:hover {
+            background: #23232a55;
+            cursor: pointer;
+        }
+        #tabela-conversao .destacado {
+            background: #b5b5c3 !important;
+            color: #23232a !important;
+            font-weight: bold;
+            transition: background 0.2s, color 0.2s;
+        }
+        /* Alinhamento com tabela de tubos */
+        #tabela-conversao, #tabela-abnt {
+            min-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        </style>
+        <footer style="width:100%;text-align:center;padding:18px 0 8px 0;color:#b5b5c3;font-size:1em;letter-spacing:1px;">
         Desenvolvido por Vitória Gabriele.
-    </footer>
-</body>
-</html>
+        </footer>
+    </body>
+    </html>
